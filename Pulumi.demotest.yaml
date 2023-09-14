@@ -37,6 +37,7 @@ config:
     natGatewayName: "natGateway"
     natIdleTimeoutInMinutes: 4
     appConfigStoreName: "a991ConfigStore"
-    vaultName: "a911Vault"
+    vaultName: "a9191Vault"
     vaultObjectId: "00000000-0000-0000-0000-000000000000"
     vaultTenantId: "e0eead01-f4d7-4924-8f3a-5e1387e6ca36"
+    securityGroupName : "myNetworkSecurityGroup"

@@ -69,7 +69,7 @@ var natGatewayName = config.Require("natGatewayName");
 int natIdleTimeoutInMinutes =Convert.ToInt32( config.Require("natIdleTimeoutInMinutes"));
 
 var appConfigStoreName = config.Require("appConfigStoreName");
-
+var sgName=config.Require("securityGroupName");
 var vaultName = config.Require("vaultName");
 var vaultObjectId = config.Require("vaultObjectId");
 var vaultTenantId = config.Require("vaultTenantId");
@@ -151,7 +151,7 @@ var natGateway = new NatGateway(natGatewayName, new NatGatewayArgs
            },
        },
    });
-   var vault = new Vault("vault", new VaultArgs
+   var vault = new Vault(vaultName, new VaultArgs
 {
     Location = resourceGroupLocation,
     Properties = new VaultPropertiesArgs
@@ -187,7 +187,7 @@ var natGateway = new NatGateway(natGatewayName, new NatGatewayArgs
 
     
     
-var networkSecurityGroup = new NetworkSecurityGroup("myNetworkSecurityGroup", new NetworkSecurityGroupArgs
+var networkSecurityGroup = new NetworkSecurityGroup(sgName, new NetworkSecurityGroupArgs
 {
     ResourceGroupName = resourceGroup.Name,
     SecurityRules = new[]
@@ -207,7 +207,7 @@ var networkSecurityGroup = new NetworkSecurityGroup("myNetworkSecurityGroup", ne
     }
     
 });
-var virtualMachine = new VirtualMachine("myVirtualMachine", new VirtualMachineArgs
+var virtualMachine = new VirtualMachine(vmName, new VirtualMachineArgs
 {
     ResourceGroupName = resourceGroup.Name,
     NetworkInterfaceIds = new[]
