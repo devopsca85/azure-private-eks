@@ -12,6 +12,8 @@ using Pulumi.Azure.ContainerService;
 using Pulumi.Azure.ContainerService.Inputs;
 using Pulumi.AzureNative.KeyVault.Inputs;
 using Pulumi.AzureNative.KeyVault;
+using Pulumi.Azure.Compute;
+using Pulumi.Azure.Compute.Inputs;
 
 
 return await Pulumi.Deployment.RunAsync(() =>
@@ -185,5 +187,61 @@ var natGateway = new NatGateway(natGatewayName, new NatGatewayArgs
 
     
     
-
+var networkSecurityGroup = new NetworkSecurityGroup("myNetworkSecurityGroup", new NetworkSecurityGroupArgs
+{
+    ResourceGroupName = resourceGroup.Name,
+    SecurityRules = new[]
+     {
+         new NetworkSecurityGroupSecurityRuleArgs
+         {
+             Name = "test123",
+             Priority = 100,
+             Direction = "Inbound",
+             Access = "Allow",
+             Protocol = "Tcp",
+             SourcePortRange = "*",
+             DestinationPortRange = "*",
+             SourceAddressPrefix = "*",
+            DestinationAddressPrefix = "*",
+        },
+    }
+    
+});
+var virtualMachine = new VirtualMachine("myVirtualMachine", new VirtualMachineArgs
+{
+    ResourceGroupName = resourceGroup.Name,
+    NetworkInterfaceIds = new[]
+    {
+         vmNic.Id,
+    },
+    VmSize=vmSize,
+    StorageImageReference = new VirtualMachineStorageImageReferenceArgs
+     {
+      Publisher = "Canonical",
+      Offer = "0001-com-ubuntu-server-focal",
+      Sku = "20_04-lts",
+      Version = "latest",
+     },
+    StorageOsDisk = new VirtualMachineStorageOsDiskArgs
+     {
+        Name = "myosdisk1",
+        Caching = "ReadWrite",
+        CreateOption = "FromImage",
+        ManagedDiskType = "Standard_LRS",
+     },
+        OsProfile = new VirtualMachineOsProfileArgs
+     {
+        ComputerName = "hostname",
+        AdminUsername = "testadmin",
+        AdminPassword = "Password1234!",
+     },
+         OsProfileLinuxConfig = new VirtualMachineOsProfileLinuxConfigArgs
+     {
+         DisablePasswordAuthentication = false,
+     },
+         Tags =
+     {
+         { "environment", "staging" },
+     },
+});
 });
