@@ -1,0 +1,20 @@
+{
+    "current": "file://~",
+    "accessTokens": {
+        "file://~": "",
+        "https://api.pulumi.com": "pul-a483aeb8d191e78ebfe51bec03774f715f5dfb7d"
+    },
+    "accounts": {
+        "file://~": {
+            "lastValidatedAt": "0001-01-01T00:00:00Z"
+        },
+        "https://api.pulumi.com": {
+            "accessToken": "pul-a483aeb8d191e78ebfe51bec03774f715f5dfb7d",
+            "username": "shubham27",
+            "organizations": [
+                "shubham27"
+            ],
+            "lastValidatedAt": "2023-09-15T10:45:39.052037542Z"
+        }
+    }
+}
