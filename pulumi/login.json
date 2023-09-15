@@ -1,20 +1,16 @@
 {
-    "current": "file://~",
+    "current": "https://api.pulumi.com",
     "accessTokens": {
-        "file://~": "",
-        "https://api.pulumi.com": "pul-a483aeb8d191e78ebfe51bec03774f715f5dfb7d"
+        "https://api.pulumi.com": "pul-7deffd1410148897ee0acbb3f376b12ac624e301"
     },
     "accounts": {
-        "file://~": {
-            "lastValidatedAt": "0001-01-01T00:00:00Z"
-        },
         "https://api.pulumi.com": {
-            "accessToken": "pul-a483aeb8d191e78ebfe51bec03774f715f5dfb7d",
-            "username": "shubham27",
+            "accessToken": "pul-7deffd1410148897ee0acbb3f376b12ac624e301",
+            "username": "shubham2709",
             "organizations": [
-                "shubham27"
+                "shubham2709"
             ],
-            "lastValidatedAt": "2023-09-15T10:45:39.052037542Z"
+            "lastValidatedAt": "2023-09-15T17:11:28.2028749+05:30"
         }
     }
 }
